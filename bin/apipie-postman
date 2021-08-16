@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+text = "desc 'Run apipie-postman'\n
+task apipie_postman: :environment do
+  puts ApipiePostman.generate_docs
+end"
+
+File.open('lib/tasks/apipie_postman.rake', 'a') do |f|
+  f.truncate(0)
+  f.write(text)
+end
