@@ -7,7 +7,7 @@
 ```ruby
 # frozen_string_literal: true
 
-Apipie.configure do |config|
+ApipiePostman.configure do |config|
   config.postman_api_key = 'your_postman_api_key'
   config.postman_collection_name = 'Your collection name'
   config.base_url = 'localhost:3000' # the base_url that you want in your postman collection
