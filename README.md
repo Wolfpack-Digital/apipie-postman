@@ -26,6 +26,10 @@ end
 * running `bundle exec apipie-postman` will create the apipie_postman.rake file
 * run `bundle exec rake apipie_postman` to run the task and generate docs
 
+## Testing
+
+The gem uses [Rspec](https://rubygems.org/gems/rspec) for testing. In order to make sure all tests are running, run `bundle install` and `bundle exec rspec spec/file_to_test.rb`.
+
 ## Want to contribute?
 
 ![](https://img.shields.io/github/issues/VictorMotogna/apipie-postman?style=flat-square)\
