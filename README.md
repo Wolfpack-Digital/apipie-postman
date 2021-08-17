@@ -1,4 +1,4 @@
-# apipie-postman
+# apipie-postman ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=flat-square&logo=ruby&logoColor=white)
 
 ## Description
 
@@ -28,4 +28,5 @@ end
 
 ## Want to contribute?
 
+![](https://img.shields.io/github/issues/VictorMotogna/apipie-postman?style=flat-square)\
 Check out [`CONTRIBUTING.md`](CONTRIBUTING.md).
