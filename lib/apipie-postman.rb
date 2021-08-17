@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'faraday'
 
+# General module for gem
 module ApipiePostman
   class << self
     attr_accessor :configuration
@@ -11,6 +14,7 @@ module ApipiePostman
     yield(configuration)
   end
 
+  # Configuration class for gem
   class Configuration
     attr_accessor :postman_api_key,
                   :postman_collection_name,
