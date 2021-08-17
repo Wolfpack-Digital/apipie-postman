@@ -1,4 +1,4 @@
-# apipie-postman ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=flat-square&logo=ruby&logoColor=white)
+# apipie-postman [![Gem Version](https://badge.fury.io/rb/apipie-postman.svg)](https://badge.fury.io/rb/apipie-postman)
 
 ## Description
 
