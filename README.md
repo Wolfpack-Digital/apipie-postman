@@ -1,23 +1,31 @@
 # apipie-postman
 
+## Description
+
+`apipie-postman` is a Ruby gem that automatically generates a Postman collection based on your apipie json output.
+
+The main reason we built this was because we were often in need for a Postman collection with the APIs we designed, but the work seemed to be duplicate. Also, the collection is hard to maintain and many times left incomplete.
+
 ## Installation
 
 * find the gem on https://rubygems.org/gems/apipie-postman
+* add the gem in `group :development, :test`
+* generate a Postman API key; details [here](https://learning.postman.com/docs/developer/intro-api/)
 * add an initializer file to `config/initializers/apipie_postman.rb`:
 ```ruby
-# frozen_string_literal: true
-
 ApipiePostman.configure do |config|
   config.postman_api_key = 'your_postman_api_key'
   config.postman_collection_name = 'Your collection name'
   config.base_url = 'localhost:3000' # the base_url that you want in your postman collection
 end
-
 ```
 * run `bundle exec apipie-postman`
-* the executable will create the `apipie_postman.rake` file
-* run `rake apipie_postman` to run the task and generate docs
 
-## Known issues
+## Usage
 
-* each time you run, a new Postman folder will be created
+* running `bundle exec apipie-postman` will create the apipie_postman.rake file
+* run `bundle exec rake apipie_postman` to run the task and generate docs
+
+## Want to contribute?
+
+Check out [`CONTRIBUTING.md`](CONTRIBUTING.md).
