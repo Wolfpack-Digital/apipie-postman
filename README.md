@@ -28,7 +28,7 @@ end
 
 ## Testing
 
-The gem uses [Rspec](https://rubygems.org/gems/rspec) for testing. In order to make sure all tests are running, run `bundle install` and `bundle exec rspec spec/file_to_test.rb`.
+The gem uses [Rspec](https://rubygems.org/gems/rspec) for testing. In order to make sure all tests are running, run `bundle install` and `bundle exec rspec spec/file_to_test.rb` or `bundle exec rspec spec/*` (to run all files).
 
 ## Want to contribute?
 
