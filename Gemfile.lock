@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    apipie-postman (0.0.4)
-      faraday (~> 1.4, >= 1.4.3)
+    apipie-postman (0.0.5)
+      faraday (>= 1.0.0)
 
 GEM
   remote: https://rubygems.org/
