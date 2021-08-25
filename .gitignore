@@ -1,4 +1,5 @@
 *.gem
+*.gemrc
 *.rbc
 *.sassc
 .bundle
@@ -13,6 +14,7 @@ InstalledFiles
 _yardoc
 doc/
 coverage
+.gem/
 lib/bundler/man
 capybara-*.html
 pkg
