@@ -3,7 +3,6 @@
 require 'json'
 require 'faraday'
 
-# General module for gem
 module ApipiePostman
   class << self
     attr_accessor :configuration
@@ -46,7 +45,7 @@ module ApipiePostman
                    end
 
         endpoints_hashes << {
-          name: endpoint['title'],
+          name: endpoint['title'] == 'Default' ? "#{endpoint['verb']} #{endpoint['path']}" : endpoint['title'],
           request: {
             url: "#{self.configuration.base_url}#{endpoint['path']}",
             method: endpoint['verb'],
@@ -72,22 +71,25 @@ module ApipiePostman
         item: endpoints_hashes
       }
     }.to_json
+
     headers = {
       'X-Api-Key': self.configuration.postman_api_key,
       'Content-Type': 'application/json'
     }
 
-    Faraday.public_send(:post, 'https://api.getpostman.com/collections/', body, headers)
+    collection_uid = check_collection_uid_by_name(headers)
 
-    # if Object.const_defined?('POSTMAN_COLLECTION_UID') && Object.const_defined?('POSTMAN_COLLECTION_ID')
-    #   Faraday.public_send(:put, "https://api.getpostman.com/collections/#{Object.const_get('POSTMAN_COLLECTION_UID')}", body, headers)
-    # else
-    #   response = Faraday.public_send(:post, 'https://api.getpostman.com/collections/', body, headers)
+    if collection_uid.nil?
+      Faraday.public_send(:post, 'https://api.getpostman.com/collections/', body, headers)
+    else
+      Faraday.public_send(:put, "https://api.getpostman.com/collections/#{collection_uid['uid']}", body, headers)
+    end
+  end
 
-    #   if response.status == 200
-    #     Object.const_set('POSTMAN_COLLECTION_UID', JSON.parse(response.body)['collection']['uid'])
-    #     Object.const_set('POSTMAN_COLLECTION_ID', JSON.parse(response.body)['collection']['id'])
-    #   end
-    # end
+  def self.check_collection_uid_by_name(headers)
+    response = Faraday.public_send(:get, 'https://api.getpostman.com/collections/', {}, headers)
+    JSON.parse(response.body)['collections'].select do |col|
+      col['name'] == self.configuration.postman_collection_name
+    end.last
   end
 end
