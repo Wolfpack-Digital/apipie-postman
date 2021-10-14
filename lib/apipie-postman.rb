@@ -38,26 +38,7 @@ module ApipiePostman
 
     docs_hashes.each do |doc_hash|
       doc_hash.each do |endpoint|
-        req_body = if endpoint['request_data'].nil?
-                     {}
-                   else
-                     endpoint['request_data']
-                   end
-
-        endpoints_hashes << {
-          name: endpoint['title'] == 'Default' ? "#{endpoint['verb']} #{endpoint['path']}" : endpoint['title'],
-          request: {
-            url: "#{self.configuration.base_url}#{endpoint['path']}",
-            method: endpoint['verb'],
-            header: [],
-            body: {
-              mode: 'raw',
-              raw: req_body.to_json
-            },
-            description: endpoint['title']
-          },
-          response: []
-        }
+        endpoints_hashes << create_endpoint_hash(endpoint, endpoint['request_data'] || {})
       end
     end
 
@@ -91,5 +72,22 @@ module ApipiePostman
     JSON.parse(response.body)['collections'].select do |col|
       col['name'] == self.configuration.postman_collection_name
     end.last
+  end
+
+  def self.create_endpoint_hash(endpoint, req_body)
+    {
+      name: endpoint['title'] == 'Default' ? "#{endpoint['verb']} #{endpoint['path']}" : endpoint['title'],
+      request: {
+        url: "#{self.configuration.base_url}#{endpoint['path']}",
+        method: endpoint['verb'],
+        header: [],
+        body: {
+          mode: 'raw',
+          raw: req_body.to_json
+        },
+        description: endpoint['title']
+      },
+      response: []
+    }
   end
 end
