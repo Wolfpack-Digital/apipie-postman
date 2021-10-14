@@ -1,7 +1,8 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.4
+  SuggestExtensions: false
+  TargetRubyVersion: 2.5
   NewCops: enable
   Exclude:
     - "bin/*"
