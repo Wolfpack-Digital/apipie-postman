@@ -1,0 +1,17 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.6
+  NewCops: enable
+  Exclude:
+    - "bin/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - Gemfile
+    - Rakefile
+
+Style/Documentation:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
