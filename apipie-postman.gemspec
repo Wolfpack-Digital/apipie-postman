@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'apipie-postman'
-  s.version     = '0.0.10'
+  s.version     = '1.0.0'
   s.required_ruby_version = '~> 2.5'
   s.summary     = 'Generate Postman collection from apipie output.'
   s.description = "Use 'bundle exec apipie-postman' and 'rake apipie_postman' to generate the docs!"

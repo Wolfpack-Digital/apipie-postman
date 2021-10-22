@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    apipie-postman (0.0.10)
+    apipie-postman (1.0.0)
       faraday (~> 1.0, >= 1.0.0)
 
 GEM
