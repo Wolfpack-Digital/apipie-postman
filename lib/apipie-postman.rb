@@ -78,7 +78,7 @@ module ApipiePostman
 
   def self.create_endpoint_hash(endpoint, req_body)
     {
-      name: endpoint['title'] == 'Default' ? "#{endpoint['verb']} #{endpoint['path']}" : endpoint['title'],
+      name: "#{endpoint['verb']} #{endpoint['path']}",
       request: {
         url: "#{self.configuration.base_url}#{endpoint['path']}",
         method: endpoint['verb'],
