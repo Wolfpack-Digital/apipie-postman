@@ -29,17 +29,19 @@ module ApipiePostman
   def self.generate_docs
     file = File.read('doc/apipie_examples.json')
     @docs = JSON.parse(file)
-    docs_hashes = []
-    endpoints_hashes = []
+    folder_hashes = []
+
+    @docs = @docs.each_with_object({}) do |array, result|
+      key = array[0].to_s.split('#')[0]
+      (result[key] ||= []).concat(array[1])
+    end.transform_values(&:flatten)
 
     @docs.each_key do |key|
-      docs_hashes << @docs[key]
-    end
-
-    docs_hashes.each do |doc_hash|
-      doc_hash.each do |endpoint|
-        endpoints_hashes << create_endpoint_hash(endpoint, endpoint['request_data'] || {})
+      key_endpoint_hashes = []
+      @docs[key].each do |endpoint|
+        key_endpoint_hashes << create_endpoint_hash(endpoint, endpoint['request_data'] || {})
       end
+      folder_hashes << create_folder(key, key_endpoint_hashes)
     end
 
     body = {
@@ -49,7 +51,7 @@ module ApipiePostman
           description: 'Test description',
           schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
         },
-        item: endpoints_hashes
+        item: folder_hashes
       }
     }.to_json
 
@@ -88,6 +90,14 @@ module ApipiePostman
         description: endpoint['title']
       },
       response: []
+    }
+  end
+
+  def self.create_folder(key, item_hashes)
+    {
+      name: key,
+      description: key,
+      item: item_hashes
     }
   end
 end
