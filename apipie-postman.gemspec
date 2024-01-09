@@ -13,7 +13,5 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.executables << 'apipie-postman'
   s.add_runtime_dependency 'faraday', '~> 2.7', '>= 2.7.12'
-  s.add_development_dependency 'pry', '~> 0.14.2'
-  s.add_development_dependency 'rspec', '~> 3.12'
-  s.add_development_dependency 'rubocop', '~> 1.57', '>= 1.57.2'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end
