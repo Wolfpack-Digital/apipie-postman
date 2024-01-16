@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    apipie-postman (1.1.0)
+    apipie-postman (2.0.0)
       faraday (~> 2.7, >= 2.7.12)
 
 GEM
@@ -62,6 +62,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-23
   x86_64-darwin-20
   x86_64-darwin-22
 
